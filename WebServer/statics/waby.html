@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lishmo</title>
+
+        <style>
+            body {
+                font-family: sans-serif;
+                text-align: center;
+                padding-top: 100px;
+                transition: background-color 0.3s ease;
+            }
+            button {
+                font-size: 1.2rem;
+                padding: 10px 20px;
+                cursor: pointer;
+                border-radius: 8px;
+                border: none;
+                background-color: #555;
+                color: white;
+            }
+            button:hover {
+                opacity: 0.85;
+            }
+            </style>
+
+  </head>
+
+  <body>
+    <h1>Hello Plumothy from da Pi you Insulted Earlier</h1>
+    <button id = "toggle"> More Pink? </button> 
+    
+    <script>
+        const btn = document.getElementById("toggle");
+        btn.addEventListener("click", () => {
+            
+            const isPink = document.body.style.backgroundColor === "pink";
+            document.body.style.backgroundColor = isPink ? "white" : "pink";
+            btn.textContent = isPink ? "More Pink" : "Less Pink";
+
+        })
+    </script>
+    
+  </body>
+</html>

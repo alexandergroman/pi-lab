@@ -50,5 +50,38 @@
 
     </form>
     
+    <h2>Recent Submissions</h2>
+    <div id="logBox" style="
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: left;
+    font-family: monospace;
+    white-space: pre-wrap;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+    "></div>
+
+    <script>
+    async function loadLogs() {
+    try {
+        const res = await fetch("/logs");
+        const data = await res.json();
+        const box = document.getElementById("logBox");
+        box.innerHTML = data.logs
+        .map(line => `<div>${line}</div>`)
+        .join("");
+    } catch (err) {
+        console.error("Failed to load logs", err);
+    }
+    }
+
+    // Initial load + refresh every 5 seconds
+    loadLogs();
+    setInterval(loadLogs, 5000);
+    </script>
+
   </body>
 </html>
